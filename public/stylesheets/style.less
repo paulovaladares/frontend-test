@@ -1,0 +1,255 @@
+@charset "utf-8";
+
+/* Funções */
+.borderRadius(@valor){
+	behavior: url(stylesheets/ie-css3.htc);
+	-webkit-border-radius: @valor;
+		-moz-border-radius: @valor;
+			border-radius: @valor;
+}
+
+.borderRadiusTopLeft(@valor){
+	behavior: url(stylesheets/ie-css3.htc);
+	-webkit-border-top-left-radius: @valor;
+		-moz-border-top-left-radius: @valor;
+			border-top-left-radius: @valor;
+
+}
+
+.borderRadiusTopRight(@valor){
+	behavior: url(stylesheets/ie-css3.htc);
+	-webkit-border-top-right-radius: @valor;
+		-moz-border-top-right-radius: @valor;
+			border-top-right-radius: @valor;
+}
+
+.borderRadiusBottomLeft(@valor){
+	behavior: url(stylesheets/ie-css3.htc);
+	-webkit-border-bottom-left-radius: @valor;
+		-moz-border-bottom-left-radius: @valor;
+			border-bottom-left-radius: @valor;
+}
+
+.borderRadiusBottomRight(@valor){
+	behavior: url(stylesheets/ie-css3.htc);
+	-webkit-border-bottom-right-radius: @valor;
+		-moz-border-bottom-right-radius: @valor;
+			border-bottom-right-radius: @valor;
+}
+
+.fonte(@valor; @cor){
+	font: @valor 'Montserrat', sans-serif;
+	color: @cor;
+}
+
+
+/*
+    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    @Tipo: Reset.
+    @Descrição: Style geral de conteúdo.
+*/
+body {margin: 0; padding: 0; font: 12px Arial, sans-serif; color: #000; background: #272727;}
+div, small, span, h1, h2, h3, h4, h5, h6, a, p, ul, li, img, form, label, button, input, select, textarea, dl, dt, dd, time {margin: 0; padding: 0;}
+nav, footer, canvas, details, dialog, article, header, aside, section, menu, video, address {margin: 0; padding: 0; display: block;}
+h1, h2, h3, h4, h5, h6, address {font-weight: normal; font-style: normal;}
+
+ul, li {list-style: none;}
+a, button {cursor: pointer;}
+a, img, button, input, textarea, div, canvas {outline: none; border: 0;}
+a:link, a:visited, a:active, a:hover {text-decoration: none;}
+textarea {overflow: auto; resize: none;}
+
+#geral {
+	float: left;
+	width: 100%;
+}
+
+.container {
+	margin: 20px auto;
+	width: 374px;
+
+	header {
+		width: 100%;
+		position: relative;
+
+		img {
+			position: relative;
+			z-index: 2;
+		}
+
+		h1 {
+			float: right;
+			padding: 7px 43px 6px 0;
+			.fonte(700 30px; #272727);
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: -2px;
+		}
+
+		span {
+			position: absolute;
+			right: 0;
+			bottom: 13px;
+			width: 300px;
+			z-index: 1;
+			background-color: #FFF;
+			.borderRadius(4px);
+		}
+	}
+
+	section {
+		display: inline-block;
+		width: 100%;
+		clear: both;
+		margin-top: 8px;
+
+		> div:nth-child(odd){
+			background-color: #FFF;
+		}
+	}
+}
+
+.participantes {
+	position: relative;
+	background: #f2f1f1;
+	width: 100%;
+	height: 101px;
+	font-family: 'Montserrat', sans-serif;
+
+	h2 {
+		display: inline-block;
+		margin-top: 33px;
+		font-size: 18px;
+		color: #ba3638;
+	}
+
+	.texto {
+		display: block;
+		font-size: 12px;
+		color: #909090;
+	}
+
+	&:hover {
+		background-color: #ba3638 !important;
+
+		h2 {
+			color: #FFF;
+		}
+
+		span {
+			color: #330d0e;
+		}
+
+		.imagens span {
+			border-color: #FFF;
+		}
+
+		> .porcentagens {
+			display: block;
+		}
+	}
+
+	&:first-child {
+		.borderRadiusTopLeft(4px);
+		.borderRadiusTopRight(4px);
+	}
+
+	&:last-child {
+		.borderRadiusBottomLeft(4px);
+		.borderRadiusBottomRight(4px);
+	}
+}
+
+.imagens {
+	position: relative;
+	float: left;
+	margin: 18px 17px 0 18px;
+
+	small {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		width: 18px;
+		height: 18px;
+		background-color: #FFF;
+		border: 1px solid #615856;
+		color: #707070;
+		.fonte(700 14px; #707070);
+		text-align: center;
+		z-index: 2;
+		.borderRadius(12px);
+	}
+	
+	span {
+		float: left;
+		width: 58px;
+		height: 58px;
+		overflow: hidden;
+		border: 4px solid #ba3638;
+		.borderRadius(35px);
+
+	    img {
+			max-width: 90px;
+		}
+	}
+}
+
+.espaco-menor {
+	height: 82px;
+
+	.imagens {
+		margin-top: 8px;
+	}
+
+	h2 {
+		margin-top: 23px;
+	}
+}
+
+.porcentagens {
+	position: absolute;
+	top: 12px;
+	right: -176px;
+	width: 156px;
+	display: none;
+
+	img {
+		position: absolute;
+		top: 21px;
+		left: -6px;
+	}
+
+	> span {
+		float: left;
+
+		small {
+			display: block;
+			padding: 4px 9px 4px 10px;
+			.fonte(700 10px; #f8f7f7);
+			text-transform: uppercase;
+			background-color: #ba3638;
+		}
+
+		span {
+			display: block;
+			height: 31px;
+			font: 700 24px 'Montserrat', sans-serif;
+			color: #909090 !important;
+			letter-spacing: -3px;
+			text-align: center;
+			background-color: #f8f7f7;
+		}
+	}
+
+	.gostam {
+		border-right: 1px solid #8c8b8b;
+		
+		small {.borderRadiusTopLeft(5px);}
+        span {.borderRadiusBottomLeft(5px);}
+	}
+
+	.nao-gostam {
+		small {.borderRadiusTopRight(5px);}
+		span {.borderRadiusBottomRight(5px);}
+	}
+}
