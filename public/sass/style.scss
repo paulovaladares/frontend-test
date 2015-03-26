@@ -1,0 +1,247 @@
+//setando cores 
+$cor-fundo: #272727;
+$cor-fundo-branco: #fff;
+$cor-vermelha-artista: #ba3638;
+$cor-apresentaco-artista: #909090;
+$cor-escura-artista: #707070;
+$cor-impar: $cor-fundo-branco;
+$cor-par: #f2f1f1;
+$cor-over: #ba3638;
+
+//fonte
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+@import "compass/css3/border-radius";
+
+
+@mixin bloco-artistas($borda-imagem, $cor-nome, $cor-dados, $cor-fundo-bloco, $altura, $valida, $cenario){
+	position: relative;
+	list-style: none;
+	height: $altura;
+	@if $valida != "impar" or $cenario != "branca"{
+		background-color: $cor-fundo-bloco;		
+	}
+
+	.midia{
+		@include border-radius(50%);
+		border: 4px solid $borda-imagem;
+		display: inline-block;
+		width: 60px;
+		height: 60px;
+		@if $valida != "impar"{
+			margin: 8px 16px 1px 19px;			
+		}@else{
+			margin: 18px 16px 1px 19px;			
+		}
+		overflow: hidden;
+		float: left;
+		z-index: 40;
+		.imagem_candidato{
+			width: 94px;
+			height: 70px;
+			float: left;
+			display: block;
+			overflow: hidden;
+			margin: -3px 0px 0px -15px;
+			border-radius: 50%;
+		}
+	}
+	.posicao{
+		font: normal 14px Montserrat;
+		color: #707070;
+		position: absolute;
+		border: 1px solid;
+		@if $valida != "impar"{
+			top: 58px;			
+		}@else{
+			top: 69px;			
+		}
+		left: 62px;
+		@include border-radius(50%);
+		width: 18px;
+		height: 18px;
+		text-align: center;
+		background-color: #fff;
+	}
+	.info{
+		@if $valida != "impar"{
+			padding-top: 25px;			
+		}@else{
+			padding-top: 35px;
+		}
+		.nome{
+			font: normal 18px Montserrat;
+			color: $cor-nome;
+		}
+		.dados{
+			font: normal 12px Montserrat;
+			color: $cor-dados;
+		}
+	}		
+	
+}
+
+@mixin percentual-fazenda($aceitacao-width, $porcentagem-width, $lado){	
+	.aceitacao{
+		background-color: $cor-vermelha-artista;								
+		height: 15px;
+		width: $aceitacao-width;
+		font: bold 10px Montserrat;
+		color: #f8f7f7;
+		text-align: center;
+		padding-top: 4px;
+		text-transform: uppercase;
+		@if $lado == "left"{
+			@include border-top-left-radius(8%);		
+		}@else{
+			@include border-top-right-radius(8%);
+		}
+	}
+	.porcentagem{
+		font: normal 25px Montserrat;
+		color: #909090;
+		background-color: $cor-fundo-branco;
+		width: $porcentagem-width;
+		text-align: center;
+		@if $lado == "left"{			
+			@include border-bottom-left-radius(8%);
+		}@else{
+			@include border-bottom-right-radius(8%);
+		}		
+	}
+
+}
+
+body{
+	background-color: $cor-fundo
+}
+.enquete{
+	width: 374px;
+	height: auto;
+	margin: auto;		
+	.logo{
+		position: relative;
+		width: 374px;
+		height: 207px;
+		.logo_imagem{
+			position: absolute;
+			top: 10px;
+			left: -50px;
+			z-index: 20;
+
+			img{
+				z-index: 19;
+			}
+		}
+		.rank{
+			font: bold 30px Montserrat;
+			text-transform: uppercase;
+			background-color: $cor-fundo-branco;
+			//float: left;
+			//margin: 152px 0px 0px 116px;
+			padding: 12px 0px 0px 81px;
+			width: 178px;
+			height: 44px;
+			border-radius: 3%;
+			position: absolute;
+  			top: 152px;
+  			left: 113px;
+  			z-index: -1;
+		}
+	}
+	.competidores{
+		background-color: $cor-fundo-branco;
+		margin-left: 23px;
+		@include border-radius(1%);
+		ul{
+			padding: 0px;
+			li.impar{
+				@include  bloco-artistas($cor-vermelha-artista, $cor-vermelha-artista, $cor-apresentaco-artista, $cor-impar, 102px, "impar", "branca");
+				.votacao{
+					display: none;
+				}
+			}
+			li.impar:hover{
+				@include  bloco-artistas($cor-fundo-branco, $cor-fundo-branco, #330d0e, $cor-over, 102px, "impar", "vermelha");
+				.votacao{
+					display: block;
+					position: absolute;
+					top: 30px;
+					left: 359px;
+					ul{
+						width: 154px;						
+						&:before{
+								  content: "";
+								  display: inline-block;
+								  vertical-align: middle;
+								  width: 0; 
+								  height: 0; 
+								  border-top: 5px solid transparent;
+								  border-bottom: 5px solid transparent; 
+								  border-right: 5px solid $cor-fundo-branco; 
+								  float: left;							  
+								  margin-top: 20px;
+						}					
+						li.esquerda{
+							width: 66px;
+							list-style: none;
+							float: left;
+							@include percentual-fazenda(66px, 66px, "left");							
+						}
+						li.direita{
+							width: 82px;
+							list-style: none;
+							float: right;
+							border-left: 1px solid #333;
+							@include percentual-fazenda(90px, 89px, null);
+						}
+					}
+				}
+			}
+			li.par{				
+				@include  bloco-artistas($cor-vermelha-artista, $cor-vermelha-artista, $cor-apresentaco-artista, $cor-par, 82px, null, "cinza");
+				.votacao{
+					display: none;
+				}
+			}
+			li.par:hover{
+				@include  bloco-artistas($cor-fundo-branco, $cor-fundo-branco, #330d0e, $cor-over, 82px, null, "cinza");
+				.votacao{
+					display: block;
+					width: 20px;
+					height: 30px;
+					position: absolute;
+					top: 15px;
+					left: 368px;
+					ul{
+						width: 154px;						
+						&:before{
+								  content: "";
+								  display: inline-block;
+								  vertical-align: middle;
+								  width: 0; 
+								  height: 0; 
+								  border-top: 5px solid transparent;
+								  border-bottom: 5px solid transparent; 
+								  border-right: 5px solid $cor-fundo-branco; 
+								  float: left;							  
+								  margin-top: 20px;
+						}					
+						li.esquerda{
+							width: 66px;
+							list-style: none;
+							float: left;
+							@include percentual-fazenda(66px, 66px, "left");							
+						}
+						li.direita{
+							width: 82px;
+							list-style: none;
+							float: right;
+							border-left: 1px solid #333;
+							@include percentual-fazenda(90px, 89px, null);
+						}
+					}
+				}			
+			}
+		}
+	}
+}
