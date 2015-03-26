@@ -1,5 +1,47 @@
+*{margin:0; text-decoration:none; list-style:none; font-family:'Montserrat';}
 body {
   text-align: center;
   font-size: 12px;
   font-family: "Arial, sans-serif";
 }
+#container{
+	width:100%;
+	height:100%;
+	background:#272727;
+}
+
+.conteudo{
+	margin:0 auto;
+	width:620px;
+	height:800px;/*teste*/
+	display:block;
+}
+div.ranking{width:375px; min-height:340px;}
+
+div.ranking .titulo{background:red; height:205px; background: url(../images/rankingTitulo.png) no-repeat; position:relative;}
+div.ranking .titulo span{position:absolute; top:153px; left:220px; color:#272727; font-size:20px; text-transform: uppercase; font-weight:bold;}
+
+div.ranking .dados{background:#FFF; border-radius: 2px; float:left;}
+
+div.participantes{float:left; padding: 10px 0 10px 0; width:100%; position:relative; }
+
+div.participantes:hover{background:#d93336; cursor:pointer;}
+div.participantes:hover .nome p {text-align:left; color:#000; font-size:12px;}
+div.participantes:hover .nome p:first-child {color:#FFF; font-size:16px;}  
+div.participantes:hover .photo div .rank {background:url(../images/mold2.png) no-repeat; width:90px; height:70px; position:absolute; top:0;}
+div.participantes:hover .photo div .rank  div{margin:48px 0 0 52px;}
+div.participantes:hover .votos{display:block!important; background:url(../images/percent.png) no-repeat; width:161px; height:50px; position:absolute; top:30px; left:400px;}
+div.participantes:hover .votos span{width:26px; height:27px; color:#919191; margin: 22px 0 0 54px; overflow:hidden; font-size:22px; display:block; float:left;}
+div.participantes:hover .votos span:first-child{margin-left:15px;}
+
+.cinza{background:#f2f0f1;}
+
+div.participantes .photo {width:90px;float:left;}
+div.participantes .photo div {position:relative;}
+div.participantes .photo div .rank {background:url(../images/mold.png) no-repeat; width:90px; height:70px; position:absolute; top:0;}
+div.participantes .photo div .rank  div{margin:52px 0 0 50px;}
+div.participantes .nome {width:265px; float:left;   margin: 15px 0 0 15px;}
+div.participantes .nome p {text-align:left;color:#a2a2a2; font-size:12px;}
+div.participantes .nome p:first-child {color:#bb3536; font-size:16px;}  
+
+div.participantes .votos {width:200px; height:100px; position:absolute;}
